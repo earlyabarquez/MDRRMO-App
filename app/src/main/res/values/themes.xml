@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MDRRMO"
+        parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/surface</item>
+        <!-- Dark icons on light status bar background -->
+        <item name="android:windowLightStatusBar">true</item>
+
+        <!-- Default card style across the whole app -->
+        <item name="materialCardViewStyle">@style/Widget.MDRRMO.CardView</item>
+
+        <!-- Default button style -->
+        <item name="materialButtonStyle">@style/Widget.MDRRMO.Button</item>
+    </style>
+
+    <!-- Splash screen — blue status bar, no action bar -->
+    <style name="Theme.MDRRMO.Splash" parent="Theme.MDRRMO">
+        <item name="android:statusBarColor">@color/primary</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <!-- Reusable card style — used by all report cards, alert cards, etc. -->
+    <style name="Widget.MDRRMO.CardView"
+        parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardElevation">0dp</item>       <!-- Flat, no shadow -->
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/border</item>
+        <item name="cardBackgroundColor">@color/surface</item>
+    </style>
+
+    <!-- Primary filled button — used for Login, Submit, etc. -->
+    <style name="Widget.MDRRMO.Button"
+        parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="cornerRadius">@dimen/button_radius</item>
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/surface</item>
+        <item name="android:textSize">@dimen/text_lg</item>
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <!-- Secondary outlined button — used for Cancel, Back, etc. -->
+    <style name="Widget.MDRRMO.Button.Outlined"
+        parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/button_height</item>
+        <item name="cornerRadius">@dimen/button_radius</item>
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">@dimen/text_lg</item>
+    </style>
+
+    <style name="Theme.MDRRMO.BottomSheet"
+        parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/Widget.MDRRMO.BottomSheet</item>
+    </style>
+
+    <style name="Widget.MDRRMO.BottomSheet"
+        parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">
+            @style/ShapeAppearance.MDRRMO.BottomSheet
+        </item>
+    </style>
+
+    <style name="ShapeAppearance.MDRRMO.BottomSheet"
+        parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@color/surface">
+
+    <!-- Drag handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="@color/border"
+        android:backgroundTint="@color/border" />
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New hazard report"
+        android:textColor="@color/text_primary"
+        android:textSize="@dimen/text_xl"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your current location will be attached"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_md"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Location card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="@dimen/card_radius"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/border"
+        app:cardBackgroundColor="@color/primary_light">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current location"
+                android:textColor="@color/primary"
+                android:textSize="@dimen/text_sm"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Coordinates — updated dynamically in Java -->
+            <TextView
+                android:id="@+id/tvCoordinates"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fetching location..."
+                android:textColor="@color/text_primary"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold" />
+
+            <!-- Address — reverse geocoded -->
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please wait..."
+                android:textColor="@color/text_secondary"
+                android:textSize="@dimen/text_sm"
+                android:layout_marginTop="2dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Reporter info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Reporter: "
+            android:textColor="@color/text_secondary"
+            android:textSize="@dimen/text_md" />
+
+        <TextView
+            android:id="@+id/tvReporterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_primary"
+            android:textSize="@dimen/text_md"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Proceed to camera button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnProceedToCamera"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:text="Proceed to camera"
+        android:textSize="@dimen/text_lg"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Cancel -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCancel"
+        style="@style/Widget.MDRRMO.Button.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:text="Cancel"
+        android:textSize="@dimen/text_lg"
+        android:layout_marginBottom="8dp" />
+
+</LinearLayout>

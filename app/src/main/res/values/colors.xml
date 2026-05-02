@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary brand — MDRRMO blue -->
+    <color name="primary">#1A56DB</color>
+    <color name="primary_dark">#1340A8</color>
+    <color name="primary_light">#EFF6FF</color>
+    <color name="primary_ripple">#1A56DB33</color> <!-- 20% opacity for ripple -->
+
+    <!-- Severity scale — Low to Critical -->
+    <color name="severity_low">#22C55E</color>       <!-- Green  -->
+    <color name="severity_moderate">#F59E0B</color>  <!-- Amber  -->
+    <color name="severity_high">#F97316</color>      <!-- Orange -->
+    <color name="severity_critical">#E24B4A</color>  <!-- Red    -->
+
+    <!-- Report status -->
+    <color name="status_pending">#F59E0B</color>
+    <color name="status_verified">#22C55E</color>
+    <color name="status_rejected">#E24B4A</color>
+    <color name="status_auto_published">#7F77DD</color> <!-- Purple — unverified high priority -->
+
+    <!-- Neutral UI -->
+    <color name="background">#F8F8F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="border">#E8E6E0</color>
+    <color name="text_primary">#1A1A1A</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_hint">#9CA3AF</color>
+    <color name="divider">#F0EEE8</color>
+</resources>

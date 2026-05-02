@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- PERMISSIONS -->
+
+    <!-- Internet: All API calls to Spring Boot backend -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Network state: NetworkUtils checks connectivity before sync -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Fine location: GPS coordinates on every report submission
+         Also powers the 200m hazard alert radius -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Background location: LocationService tracks position when
+         app is minimized so hazard alerts still fire -->
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- Camera: Capturing hazard photos in ReportCameraActivity -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Notifications: Required on Android 13+ to show push notifications -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Foreground service: Required for LocationService running in background -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+
+    <!-- ══ HARDWARE ══════════════════════════════════════════════════════ -->
+
+    <!-- required=false: App still installs on devices without camera
+         (they just can't use the report feature) -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <!-- ══ APPLICATION ══════════════════════════════════════════════════ -->
+
+    <application
+        android:name=".MDRRMOApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MDRRMO"
+        android:usesCleartextTraffic="true">
+        <!--
+            usesCleartextTraffic="true": Allows HTTP during development
+            when Spring Boot runs on your local network (192.168.x.x).
+            Switch to false + HTTPS before going to production.
+        -->
+
+        <!-- Google Maps API Key
+             Get this from: Google Cloud Console → Maps SDK for Android
+             Replace the placeholder before running the app -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${mapsApiKey}" />
+
+        <!-- ── Activities ─────────────────────────────────────── -->
+
+        <!-- Entry point: Checks for saved JWT token.
+             If found → go to MainActivity (skip login)
+             If not found → go to LoginActivity -->
+        <activity
+            android:name=".activities.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MDRRMO.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Shell activity: Hosts bottom nav bar, FAB,
+             and all 4 fragments -->
+        <activity
+            android:name=".activities.MainActivity"
+            android:exported="false" />
+
+        <!-- Step 1 of report flow: Full-screen camera capture
+             Locked to portrait so layout stays stable -->
+        <activity
+            android:name=".report.ReportCameraActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <!-- Step 2 of report flow: Hazard type, severity, description -->
+        <activity
+            android:name=".report.ReportFormActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".report.ReportPreviewActivity"
+            android:exported="false" />
+
+        <!-- ── Services ───────────────────────────────────────── -->
+
+        <!-- Runs in background to track user location for
+             200m hazard alert radius -->
+        <service
+            android:name=".services.LocationService"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <!-- Receives FCM push notifications from Firebase.
+             Handles: nearby hazard alerts, report verified/rejected -->
+        <service
+            android:name=".services.FCMService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+    </application>
+
+</manifest>

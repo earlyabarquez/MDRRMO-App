@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MDRRMO</string>
+    <string name="app_subtitle">Balilihan, Bohol</string>
+
+    <!-- Auth screens -->
+    <string name="login_title">Welcome back</string>
+    <string name="login_subtitle">Sign in to your MDRRMO account</string>
+    <string name="register_title">Create account</string>
+    <string name="register_subtitle">Join the MDRRMO reporting network</string>
+    <string name="label_email">Email address</string>
+    <string name="label_password">Password</string>
+    <string name="label_confirm_password">Confirm password</string>
+    <string name="label_full_name">Full name</string>
+    <string name="label_phone">Phone number</string>
+    <string name="btn_login">Log in</string>
+    <string name="btn_register"> Create account</string>
+    <string name="btn_forgot_password">Forgot password?</string>
+    <string name="prompt_no_account">Don\'t have an account? </string>
+    <string name="prompt_has_account">Already have an account? </string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_map">Map</string>
+    <string name="nav_reports">Reports</string>
+    <string name="nav_alerts">Alerts</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Report flow -->
+    <string name="report_step_1">Step 1 of 2 — Capture photo</string>
+    <string name="report_step_2">Step 2 of 2 — Hazard details</string>
+    <string name="btn_capture">Capture photo</string>
+    <string name="btn_retake">Retake</string>
+    <string name="btn_submit_report">Submit report</string>
+    <string name="label_hazard_type">Hazard type</string>
+    <string name="label_severity">Severity level</string>
+    <string name="label_description">Description (optional)</string>
+    <string name="label_location">Location</string>
+    <string name="label_timestamp">Date and time</string>
+    <string name="label_reporter">Reporter</string>
+
+    <!-- Severity -->
+    <string name="severity_low">Low</string>
+    <string name="severity_moderate">Moderate</string>
+    <string name="severity_high">High</string>
+    <string name="severity_critical">Critical</string>
+
+    <!-- Report status -->
+    <string name="status_pending">Pending</string>
+    <string name="status_verified">Verified</string>
+    <string name="status_rejected">Rejected</string>
+    <string name="status_auto_published">Unverified — High Priority</string>
+
+    <!-- Sync queue -->
+    <string name="sync_now">Sync now</string>
+    <string name="sync_pending">%d pending upload</string>  <!-- %d = number -->
+    <string name="sync_success">All reports synced</string>
+
+    <!-- Map -->
+    <string name="map_title">Nearby hazards</string>
+    <string name="map_no_hazards">No active hazards nearby</string>
+
+    <!-- Alerts -->
+    <string name="alerts_title">Hazard alerts</string>
+    <string name="alerts_radius">Within %dm radius</string>
+    <string name="alerts_empty">No alerts in your area</string>
+
+    <!-- Profile -->
+    <string name="profile_total_reports">Total reports</string>
+    <string name="profile_verified">Verified</string>
+    <string name="profile_pending">Pending</string>
+    <string name="profile_rejected">Rejected</string>
+    <string name="btn_sign_out">Sign out</string>
+
+    <!-- Errors -->
+    <string name="error_no_internet">No internet connection</string>
+    <string name="error_location_unavailable">Location unavailable. Enable GPS.</string>
+    <string name="error_upload_failed">Upload failed — report saved offline</string>
+    <string name="error_invalid_email">Enter a valid email address</string>
+    <string name="error_weak_password">Password must be at least 8 characters</string>
+    <string name="error_passwords_no_match">Passwords do not match</string>
+    <string name="error_fields_required">Please fill in all required fields</string>
+</resources>

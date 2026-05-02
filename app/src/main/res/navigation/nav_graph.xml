@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mapFragment">
+
+    <!-- Map tab — default landing screen after login -->
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name=".fragments.MapFragment"
+        android:label="@string/nav_map" />
+
+    <!-- Reports tab — shows report history list -->
+    <fragment
+        android:id="@+id/reportsFragment"
+        android:name=".fragments.ReportsFragment"
+        android:label="@string/nav_reports">
+        <!-- Tapping a report card navigates here -->
+        <action
+            android:id="@+id/action_reports_to_detail"
+            app:destination="@id/reportDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <!-- Report detail — status tracking, timestamps, photo -->
+    <fragment
+        android:id="@+id/reportDetailFragment"
+        android:name=".fragments.ReportDetailFragment"
+        android:label="Report detail">
+        <!-- Receives report ID from the Reports list -->
+        <argument
+            android:name="reportId"
+            app:argType="long" />
+    </fragment>
+
+    <!-- Alerts tab — nearby hazard notification feed -->
+    <fragment
+        android:id="@+id/alertsFragment"
+        android:name=".fragments.AlertsFragment"
+        android:label="@string/nav_alerts" />
+
+    <!-- Profile tab — user info, report stats, sign out -->
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name=".fragments.ProfileFragment"
+        android:label="@string/nav_profile" />
+
+</navigation>
