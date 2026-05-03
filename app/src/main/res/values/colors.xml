@@ -1,29 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Primary brand — MDRRMO blue -->
-    <color name="primary">#1A56DB</color>
-    <color name="primary_dark">#1340A8</color>
+    <!-- Primary brand — refined blue -->
+    <color name="primary">#2563EB</color>
+    <color name="primary_dark">#1D4ED8</color>
     <color name="primary_light">#EFF6FF</color>
-    <color name="primary_ripple">#1A56DB33</color> <!-- 20% opacity for ripple -->
+    <color name="primary_ripple">#2563EB1A</color>
 
-    <!-- Severity scale — Low to Critical -->
-    <color name="severity_low">#22C55E</color>       <!-- Green  -->
-    <color name="severity_moderate">#F59E0B</color>  <!-- Amber  -->
-    <color name="severity_high">#F97316</color>      <!-- Orange -->
-    <color name="severity_critical">#E24B4A</color>  <!-- Red    -->
+    <!-- Severity scale -->
+    <color name="severity_low">#16A34A</color>
+    <color name="severity_moderate">#D97706</color>
+    <color name="severity_high">#EA580C</color>
+    <color name="severity_critical">#DC2626</color>
 
     <!-- Report status -->
-    <color name="status_pending">#F59E0B</color>
-    <color name="status_verified">#22C55E</color>
-    <color name="status_rejected">#E24B4A</color>
-    <color name="status_auto_published">#7F77DD</color> <!-- Purple — unverified high priority -->
+    <color name="status_pending">#D97706</color>
+    <color name="status_verified">#16A34A</color>
+    <color name="status_rejected">#DC2626</color>
+    <color name="status_auto_published">#7C3AED</color>
 
-    <!-- Neutral UI -->
-    <color name="background">#F8F8F5</color>
+    <!-- Neutral UI — clean minimal palette -->
+    <color name="background">#F9FAFB</color>
     <color name="surface">#FFFFFF</color>
-    <color name="border">#E8E6E0</color>
-    <color name="text_primary">#1A1A1A</color>
+    <color name="border">#E5E7EB</color>
+    <color name="border_focus">#2563EB</color>
+    <color name="text_primary">#111827</color>
     <color name="text_secondary">#6B7280</color>
     <color name="text_hint">#9CA3AF</color>
-    <color name="divider">#F0EEE8</color>
+    <color name="divider">#F3F4F6</color>
+
+    <!-- Severity background tints — for stat tiles -->
+    <color name="severity_low_bg">#F0FDF4</color>
+    <color name="severity_moderate_bg">#FFFBEB</color>
+    <color name="severity_high_bg">#FFF7ED</color>
+    <color name="severity_critical_bg">#FEF2F2</color>
 </resources>

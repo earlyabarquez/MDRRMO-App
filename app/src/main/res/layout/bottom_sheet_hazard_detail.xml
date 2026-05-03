@@ -9,32 +9,31 @@
 
     <!-- Drag handle -->
     <View
-        android:layout_width="40dp"
+        android:layout_width="36dp"
         android:layout_height="4dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="0dp"
         android:background="@color/border" />
 
-    <!-- Scrollable content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:paddingTop="0dp">
+        android:overScrollMode="never">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <!-- Hazard type + risk level row -->
+            <!-- Hazard name + risk badge -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:id="@+id/tvHazardName"
@@ -42,10 +41,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:textColor="@color/text_primary"
-                    android:textSize="@dimen/text_xl"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <!-- Risk level badge -->
                 <TextView
                     android:id="@+id/tvRiskLevel"
                     android:layout_width="wrap_content"
@@ -54,10 +52,10 @@
                     android:paddingEnd="10dp"
                     android:paddingTop="4dp"
                     android:paddingBottom="4dp"
-                    android:textSize="@dimen/text_sm"
+                    android:textSize="11sp"
                     android:textStyle="bold"
                     android:textColor="@color/surface"
-                    android:background="@drawable/bg_risk_badge" />
+                    android:background="@drawable/bg_tag" />
 
             </LinearLayout>
 
@@ -71,11 +69,11 @@
                 android:paddingEnd="10dp"
                 android:paddingTop="3dp"
                 android:paddingBottom="3dp"
-                android:textSize="@dimen/text_sm"
+                android:textSize="11sp"
                 android:textColor="@color/surface"
-                android:background="@drawable/bg_status_badge" />
+                android:background="@drawable/bg_tag" />
 
-            <!-- Photo — hidden if no image -->
+            <!-- Photo -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardPhoto"
                 android:layout_width="match_parent"
@@ -83,7 +81,9 @@
                 android:layout_marginBottom="16dp"
                 android:visibility="gone"
                 app:cardCornerRadius="10dp"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border">
 
                 <ImageView
                     android:id="@+id/ivHazardPhoto"
@@ -94,122 +94,177 @@
 
             </androidx.cardview.widget.CardView>
 
-            <!-- Details -->
+            <!-- Detail rows -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/background"
-                android:padding="12dp">
+                android:layout_marginBottom="12dp">
 
-                <!-- Location row -->
+                <!-- Location -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📍 "
-                        android:textSize="@dimen/text_md" />
+                        android:text="📍"
+                        android:textSize="13sp"
+                        android:layout_marginEnd="8dp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Location"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_md" />
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Reporter row -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginStart="40dp"/>
+
+                <!-- Reporter -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="👤 "
-                        android:textSize="@dimen/text_md" />
+                        android:text="👤"
+                        android:textSize="13sp"
+                        android:layout_marginEnd="8dp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Reporter"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvReporter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_md" />
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Date row -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginStart="40dp"/>
+
+                <!-- Date -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="44dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🕐 "
-                        android:textSize="@dimen/text_md" />
+                        android:text="🕐"
+                        android:textSize="13sp"
+                        android:layout_marginEnd="8dp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Reported"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_md" />
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Distance row -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginStart="40dp"/>
+
+                <!-- Distance -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_height="44dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📏 "
-                        android:textSize="@dimen/text_md" />
+                        android:text="📏"
+                        android:textSize="13sp"
+                        android:layout_marginEnd="8dp" />
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Distance"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvDistance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/text_md" />
+                        android:textColor="@color/primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <!-- Description — hidden if empty -->
+            <!-- Description -->
             <LinearLayout
                 android:id="@+id/layoutDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone"
-                android:layout_marginTop="12dp">
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Description"
                     android:textColor="@color/text_secondary"
-                    android:textSize="@dimen/text_sm"
+                    android:textSize="11sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="4dp" />
+                    android:letterSpacing="0.06"
+                    android:layout_marginBottom="6dp" />
 
                 <TextView
                     android:id="@+id/tvDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_primary"
-                    android:textSize="@dimen/text_md" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.5" />
 
             </LinearLayout>
 
             <!-- Bottom padding -->
             <View
                 android:layout_width="match_parent"
-                android:layout_height="24dp" />
+                android:layout_height="16dp" />
 
         </LinearLayout>
     </ScrollView>

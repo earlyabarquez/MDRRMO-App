@@ -12,17 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/surface"
-        android:elevation="2dp">
+        android:background="@color/surface">
 
         <!-- Title row -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:padding="16dp"
-            android:paddingBottom="8dp">
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -30,20 +29,19 @@
                 android:layout_weight="1"
                 android:text="My Reports"
                 android:textColor="@color/text_primary"
-                android:textSize="@dimen/text_xl"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <!-- Total count -->
             <TextView
                 android:id="@+id/tvTotalCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_secondary"
-                android:textSize="@dimen/text_sm" />
+                android:textColor="@color/text_hint"
+                android:textSize="13sp" />
 
         </LinearLayout>
 
-        <!-- Sync queue banner — visible only when offline reports exist -->
+        <!-- Sync banner -->
         <LinearLayout
             android:id="@+id/layoutSyncBanner"
             android:layout_width="match_parent"
@@ -52,8 +50,8 @@
             android:gravity="center_vertical"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:background="@color/primary_light"
             android:visibility="gone">
 
@@ -63,35 +61,36 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textColor="@color/primary"
-                android:textSize="@dimen/text_sm"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <!-- Manual sync button -->
             <TextView
                 android:id="@+id/tvSyncNow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sync now"
-                android:textColor="@color/surface"
-                android:textSize="@dimen/text_sm"
+                android:text="Sync now →"
+                android:textColor="@color/primary"
+                android:textSize="12sp"
                 android:textStyle="bold"
-                android:background="@color/primary"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp" />
+                android:padding="4dp" />
 
         </LinearLayout>
 
-        <!-- Filter buttons row -->
+        <!-- Thin divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border" />
+
+        <!-- Filter chips -->
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="12dp">
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -102,51 +101,51 @@
                     android:id="@+id/btnFilterAll"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="6dp"
                     android:text="All"
-                    android:textSize="@dimen/text_sm"
+                    android:textSize="12sp"
                     app:strokeColor="@color/primary"
-                    app:cornerRadius="18dp" />
+                    app:cornerRadius="17dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterPending"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="6dp"
                     android:text="Pending"
-                    android:textSize="@dimen/text_sm"
+                    android:textSize="12sp"
                     app:strokeColor="@color/status_pending"
-                    app:cornerRadius="18dp" />
+                    app:cornerRadius="17dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterVerified"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="34dp"
                     android:layout_marginEnd="6dp"
                     android:text="Verified"
-                    android:textSize="@dimen/text_sm"
+                    android:textSize="12sp"
                     app:strokeColor="@color/status_verified"
-                    app:cornerRadius="18dp" />
+                    app:cornerRadius="17dp" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnFilterRejected"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
-                    android:layout_height="36dp"
+                    android:layout_height="34dp"
                     android:text="Rejected"
-                    android:textSize="@dimen/text_sm"
+                    android:textSize="12sp"
                     app:strokeColor="@color/status_rejected"
-                    app:cornerRadius="18dp" />
+                    app:cornerRadius="17dp" />
 
             </LinearLayout>
         </HorizontalScrollView>
 
     </LinearLayout>
 
-    <!-- Loading indicator -->
+    <!-- Loading -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -159,7 +158,7 @@
         android:id="@+id/rvReports"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="180dp"
+        android:paddingTop="172dp"
         android:paddingBottom="16dp"
         android:clipToPadding="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
@@ -178,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="📋"
-            android:textSize="48sp"
+            android:textSize="44sp"
             android:layout_marginBottom="12dp" />
 
         <TextView
@@ -187,7 +186,7 @@
             android:layout_height="wrap_content"
             android:text="No reports yet"
             android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_lg"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <TextView
@@ -196,7 +195,7 @@
             android:layout_marginTop="4dp"
             android:text="Tap the + button to submit a report"
             android:textColor="@color/text_hint"
-            android:textSize="@dimen/text_md" />
+            android:textSize="13sp" />
 
     </LinearLayout>
 
