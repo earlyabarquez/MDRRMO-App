@@ -1,62 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Clean centered splash: app icon + name + subtitle -->
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary">
+    android:background="@color/surface">
 
-    <!-- App icon placeholder — replace with your actual MDRRMO logo -->
+    <!-- Top accent bar — emergency red stripe -->
+    <View
+        android:id="@+id/viewTopAccent"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@color/severity_critical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Large background circle — decorative -->
+    <View
+        android:id="@+id/viewCircleBg"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:background="@drawable/bg_splash_circle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="60dp" />
+
+    <!-- App logo -->
     <ImageView
         android:id="@+id/ivLogo"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
+        android:layout_width="88dp"
+        android:layout_height="88dp"
         android:src="@mipmap/ic_launcher_round"
         app:layout_constraintBottom_toTopOf="@id/tvAppName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.42" />
 
+    <!-- MDRRMO -->
     <TextView
         android:id="@+id/tvAppName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/app_name"
-        android:textColor="@color/surface"
-        android:textSize="32sp"
+        android:textColor="@color/text_primary"
+        android:textSize="34sp"
         android:textStyle="bold"
-        android:letterSpacing="0.05"
-        app:layout_constraintBottom_toTopOf="@id/tvSubtitle"
+        android:letterSpacing="0.06"
+        app:layout_constraintBottom_toTopOf="@id/viewDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivLogo" />
 
-    <TextView
-        android:id="@+id/tvSubtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="@string/app_subtitle"
-        android:textColor="#BFDBFE"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <!-- Thin divider under app name -->
+    <View
+        android:id="@+id/viewDivider"
+        android:layout_width="40dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/primary"
+        app:layout_constraintBottom_toTopOf="@id/tvSubtitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvAppName" />
 
-    <!-- Version number at the bottom -->
+    <!-- Balilihan, Bohol -->
     <TextView
+        android:id="@+id/tvSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="v1.0"
-        android:textColor="#93C5FD"
-        android:textSize="12sp"
+        android:layout_marginTop="10dp"
+        android:text="@string/app_subtitle"
+        android:textColor="@color/text_secondary"
+        android:textSize="13sp"
+        android:letterSpacing="0.04"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewDivider" />
+
+    <!-- Emergency tagline -->
+    <TextView
+        android:id="@+id/tvTagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="Hazard Reporting App"
+        android:textColor="@color/text_hint"
+        android:textSize="12sp"
+        android:letterSpacing="0.08"
+        app:layout_constraintBottom_toTopOf="@id/viewBottomAccent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Loading dots row -->
+    <LinearLayout
+        android:id="@+id/layoutDots"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_dot_active" />
+
+        <View
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/bg_dot_inactive" />
+
+        <View
+            android:layout_width="6dp"
+            android:layout_height="6dp"
+            android:background="@drawable/bg_dot_inactive" />
+
+    </LinearLayout>
+
+    <!-- Invisible anchor for dots -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/anchorDots"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/viewBottomAccent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/anchorTagline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/layoutDots"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Bottom strip — MDRRMO identifier + version -->
+    <LinearLayout
+        android:id="@+id/viewBottomAccent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="@color/primary_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Left red dot — emergency indicator -->
+        <View
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_dot_emergency" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Municipal DRRMO — Balilihan"
+            android:textColor="@color/primary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="v1.0"
+            android:textColor="@color/text_hint"
+            android:textSize="11sp" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

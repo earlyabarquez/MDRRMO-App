@@ -4,248 +4,324 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/background"
+    android:overScrollMode="never">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="@dimen/screen_padding">
+        android:orientation="vertical">
 
-        <!-- Success banner -->
-        <androidx.cardview.widget.CardView
+        <!-- ── Success / Offline banner ── -->
+        <LinearLayout
             android:id="@+id/cardSuccess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="@dimen/card_radius"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/status_verified">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="36dp"
+            android:paddingBottom="28dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:background="@drawable/bg_profile_banner">
 
+            <!-- Check circle -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
                 android:gravity="center"
-                android:padding="20dp">
+                android:background="@drawable/bg_success_circle"
+                android:layout_marginBottom="14dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="✓"
-                    android:textColor="@color/surface"
-                    android:textSize="32sp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvSuccessTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Report submitted"
-                    android:textColor="@color/surface"
-                    android:textSize="@dimen/text_xl"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvSuccessSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="Your report is pending admin verification"
-                    android:textColor="#CCFFFFFF"
-                    android:textSize="@dimen/text_sm"
-                    android:gravity="center" />
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Offline warning banner — visible only when saved offline -->
-        <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/tvSuccessTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report submitted"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvSuccessSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your report is pending admin verification"
+                android:textColor="#BFDBFE"
+                android:textSize="13sp"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <!-- ── Offline warning ── -->
+        <LinearLayout
             android:id="@+id/cardOfflineWarning"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:visibility="gone"
-            app:cardCornerRadius="@dimen/card_radius"
-            app:cardElevation="0dp"
-            app:cardBackgroundColor="@color/status_pending">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:background="@color/severity_moderate_bg"
+            android:visibility="gone">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="14dp"
-                android:text="⚠ Saved offline — will upload automatically when internet is restored"
-                android:textColor="@color/surface"
-                android:textSize="@dimen/text_sm"
-                android:gravity="center" />
+                android:text="⚠"
+                android:textSize="14sp"
+                android:layout_marginEnd="8dp" />
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Saved offline — will upload automatically when internet is restored"
+                android:textColor="@color/status_pending"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
-        <!-- Report photo -->
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="@dimen/card_radius"
-            app:cardElevation="0dp">
+        </LinearLayout>
 
-            <ImageView
-                android:id="@+id/ivPhoto"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:contentDescription="Hazard photo" />
-
-        </androidx.cardview.widget.CardView>
-
-        <!-- Report details card -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="@dimen/card_radius"
-            app:cardElevation="0dp"
-            app:strokeWidth="1dp"
-            app:strokeColor="@color/border"
-            app:cardBackgroundColor="@color/surface">
+            android:orientation="vertical"
+            android:padding="20dp">
 
+            <!-- ── Photo ── -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="12dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border">
+
+                <ImageView
+                    android:id="@+id/ivPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="Hazard photo" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- ── Report details ── -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:background="@color/surface"
+                android:layout_marginBottom="12dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Report details"
-                    android:textColor="@color/text_primary"
-                    android:textSize="@dimen/text_lg"
-                    android:textStyle="bold"
-                    android:layout_marginBottom="12dp" />
-
-                <!-- Hazard type row -->
+                <!-- Section header -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingBottom="10dp">
+
+                    <View
+                        android:layout_width="3dp"
+                        android:layout_height="14dp"
+                        android:background="@drawable/bg_section_indicator"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="REPORT DETAILS"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="0.06" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/divider" />
+
+                <!-- Hazard type -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Hazard type"
                         android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/text_sm" />
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvHazardType"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_sm"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Severity row -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginStart="16dp"/>
+
+                <!-- Severity -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Severity"
+                        android:text="Risk level"
                         android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/text_sm" />
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvSeverity"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/text_sm"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Location row -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginStart="16dp"/>
+
+                <!-- Location -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Location"
                         android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/text_sm" />
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_sm"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Timestamp row -->
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@color/divider" android:layout_marginStart="16dp"/>
+
+                <!-- Submitted at -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="52dp"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
+                    android:gravity="center_vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Submitted"
                         android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/text_sm" />
+                        android:textSize="13sp" />
                     <TextView
                         android:id="@+id/tvSubmittedAt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_sm"
+                        android:textSize="13sp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
-                <!-- Description row — hidden if empty -->
+                <!-- Description — hidden if empty -->
                 <LinearLayout
                     android:id="@+id/layoutDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Description"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="@dimen/text_sm"
-                        android:layout_marginBottom="4dp" />
-                    <TextView
-                        android:id="@+id/tvDescription"
+
+                    <View android:layout_width="match_parent" android:layout_height="1dp"
+                        android:background="@color/divider" android:layout_marginStart="16dp"/>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/text_primary"
-                        android:textSize="@dimen/text_sm" />
+                        android:orientation="vertical"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:letterSpacing="0.04"
+                            android:layout_marginBottom="4dp" />
+
+                        <TextView
+                            android:id="@+id/tvDescription"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_primary"
+                            android:textSize="13sp"
+                            android:lineSpacingMultiplier="1.4" />
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
 
-        <!-- Done button — goes back to Map -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDone"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
-            android:layout_marginBottom="32dp"
-            android:text="Back to map"
-            android:textSize="@dimen/text_lg" />
+            <!-- ── Back to map button ── -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:layout_marginBottom="32dp"
+                android:text="Back to map"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="10dp" />
 
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
